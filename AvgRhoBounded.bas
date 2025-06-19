@@ -2,7 +2,7 @@
 
 Function AvgRhoBounded(RET, LB, UB)
     
-    
+  'Aurum
     Dim q3  As Worksheet, totalColumns As Integer, columnCtr As Integer, secColumnCtr As Integer, _
         rjo_ij As Double, total_rho As Double, n_rho As Double, lastRowData As Long
 
@@ -49,4 +49,36 @@ Function AvgRhoBounded(RET, LB, UB)
    
  
 End Function
+
+Function AvgRhoBounded2(RET, LB, UB)
+    
+    Count = 0
+    Total = 0
+    n = RET.Columns.Count
+    Dim matrix() As Double
+    ReDim matrix(n, n)
+    
+        For i = 1 To n
+            For j = i + 1 To n
+            matrix(i, j) = Application.WorksheetFunction.Correl(RET.Columns(i), RET.Columns(j))
+            Next j
+        Next i
+    
+    
+    For i = 1 To n
+        For j = i + 1 To n
+        
+        If matrix(i, j) >= LB And matrix(i, j) <= UB Then
+        Total = Total + matrix(i, j)
+        Count = Count + 1
+        End If
+        Next j
+    Next i
+    
+    Value = Total / Count
+    AvgRhoBounded2 = Value
+   
+End Function
+
+
 

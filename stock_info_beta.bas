@@ -1,6 +1,8 @@
 Option Base 1
 Function Stock_Info(STOCK_RET As Range, RF As Single, CHOICE, Optional MKT_RET)
 
+'Aurum
+
 Dim q1 As Worksheet
 
 Set q1 = ThisWorkbook.Sheets("Q1")
